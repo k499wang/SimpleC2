@@ -1,0 +1,67 @@
+POST: http://localhost:2000/api/agents/register-agent
+
+{
+  "agentId": "123",
+  "status": "active",
+  "os": "Windows",
+  "ip": "12.12.12.12",
+  "isCheckedIn": true
+}
+
+{
+    "agentId": "123",
+    "status": "active",
+    "tasks": [],
+    "os": "Windows",
+    "ip": "12.12.12.12",
+    "lastSeen": "2024-10-23T23:15:19.121Z",
+    "_id": "67198387adfe35372cb2970c",
+    "__v": 0
+}
+
+POST http://localhost:2000/api/tasks/createTasks
+
+{
+  "command": "ls",
+  "agentId": "1234",
+  "status": "active",
+  "priority": "high",
+  "output": "Sample Output"
+}
+
+{
+    "message": "Agent not found"
+}
+
+POST http://localhost:2000/api/tasks/createTasks
+
+{
+  "command": "ls",
+  "agentId": "123",
+  "status": "active",
+  "priority": "high",
+  "output": "Sample Output"
+}
+
+{
+    "command": "ls",
+    "agentId": "123",
+    "status": "active",
+    "priority": "high",
+    "output": "Sample Output",
+    "createdAt": "2024-10-23T23:28:59.611Z",
+    "_id": "671986bb084788868a07d754",
+    "__v": 0
+}
+
+{
+  "command": "ls",
+  "agentId": "112423",
+  "status": "active",
+  "priority": "high",
+  "output": "Sample Output"
+}
+
+{
+    "message": "Agent not found"
+}

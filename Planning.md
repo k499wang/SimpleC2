@@ -1,0 +1,2 @@
+- Learn WinAPI
+- Beaconing to regularly check in
