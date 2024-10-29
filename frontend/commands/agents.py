@@ -1,7 +1,4 @@
-from bson.objectid import ObjectId
 import requests
-import json
-from utils.jsonTools import list_all_json
 
 class AgentModel:
     def __init__(self, SECRET_API):

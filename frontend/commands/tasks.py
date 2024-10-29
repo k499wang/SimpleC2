@@ -1,6 +1,4 @@
-from bson.objectid import ObjectId
 import requests
-import json
 from utils.jsonTools import list_all_json
 import os
 from dotenv import load_dotenv

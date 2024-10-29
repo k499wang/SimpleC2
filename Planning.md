@@ -1,2 +1,4 @@
 - Learn WinAPI
 - Beaconing to regularly check in
+- Build Implant Class
+- Become familiar with pointers
