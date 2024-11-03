@@ -1,5 +1,6 @@
 import Task from '../models/task.model.js';
 import Agent from '../models/agent.model.js';
+import socketPython from '../socket/socketPython.js';
 
 
 export const getTasks = async (req, res) => {
@@ -55,10 +56,22 @@ export const updateTask = async(req, res) => {
         task.completedAt = completedAt || task.completedAt;
 
         await task.save();
-        res.status(200).json(task);
-    }
 
-    catch(error){
+        const jsonOutput = {
+            command: task.command,
+            output: task.output
+        };
+
+        if(socketPython.writable) {
+            try {
+                socketPython.write(JSON.stringify(jsonOutput));
+            } catch (error) {
+                console.error('Error writing to socket:', error);
+            }
+        }
+
+        res.status(200).json(task);
+    } catch (error) {
         res.status(500).json({message: error.message});
     }
 }

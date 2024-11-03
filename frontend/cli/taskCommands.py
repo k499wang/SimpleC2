@@ -7,7 +7,7 @@ class TaskCommands:
     def __init__(self):
         self.tasks = {
             'shell': (run_shell, 'Execute shell commands with arguments'),
-            'persistence': (persistence, 'Take a screenshot'),
+            'persistence': (persistence, 'Installs persistence via Registry Keys'),
             "kill": (kill, "kills the agent")
         }
 

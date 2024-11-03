@@ -4,10 +4,14 @@ import connectToDatabase from './db/connect.js';
 import taskRoutes from './routes/task.routes.js';
 import agentRoutes from './routes/agent.routes.js';
 
+
+
 const PORT = process.env.PORT || 2000;
 
 // Configuration for the app
 const app = express();
+
+
 dotenv.config();
 app.use(express.json());
 

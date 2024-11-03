@@ -9,6 +9,9 @@ class MyShell(cmd.Cmd):
         self.prompt = 'SimpleC2> '
         self.tasks = TaskCommands()
     
+    def emptyline(self):
+        pass
+    
     def do_list_tasks(self, line):
         """List available tasks."""
         self.tasks.list_tasks()
