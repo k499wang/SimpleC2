@@ -21,11 +21,6 @@ const taskSchema = new mongoose.Schema({
         default: 'pending'
     },
 
-    priority:{
-        type: String,
-        default: 'low'
-    },
-
     output:{
         type: String,
         default: 'Not Finished'

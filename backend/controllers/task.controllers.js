@@ -4,7 +4,7 @@ import Agent from '../models/agent.model.js';
 
 export const getTasks = async (req, res) => {
     try {
-        const {agentId, status} = req.body;
+        const { agentId, status } = req.query;
 
         if(!agentId){
             return res.status(400).json({message: 'Agent ID is required'});
@@ -32,9 +32,40 @@ export const getTasks = async (req, res) => {
 
 }
 
+export const updateTask = async(req, res) => {
+    try{
+        const {taskId, status, output, completedAt} = req.body;
+
+        if(!taskId){
+            return res.status(400).json({message: 'Task ID is required'});
+        }
+
+        const task = await Task.findById(taskId);
+
+        if(!task){
+            return res.status(404).json({message: 'Task not found'});
+        }
+
+        if (task.status == 'completed'){
+            return res.status(400).json({message: 'Task is already completed'});
+        }
+
+        task.status = status || task.status;
+        task.output = output || task.output;
+        task.completedAt = completedAt || task.completedAt;
+
+        await task.save();
+        res.status(200).json(task);
+    }
+
+    catch(error){
+        res.status(500).json({message: error.message});
+    }
+}
+
 export const createTask = async (req, res) => {
     try{
-        const {command, args, agentId, status, priority, output, createdAt, completedAt} = req.body; // gets the ID field from the JSON
+        const {command, args, agentId, status, output, createdAt, completedAt} = req.body; // gets the ID field from the JSON
 
         if(!command || !agentId){
             return res.status(400).json({message: 'Command and Agent ID are required'});
@@ -57,7 +88,6 @@ export const createTask = async (req, res) => {
             agentId,
             arguments: args || undefined,
             status: status || undefined,
-            priority: priority || undefined,
             output: output || undefined,
             createdAt: createdAt || undefined,
             completedAt: completedAt || undefined

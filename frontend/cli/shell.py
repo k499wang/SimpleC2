@@ -37,22 +37,17 @@ class MyShell(cmd.Cmd):
         parser = argparse.ArgumentParser()
         parser.add_argument('-task', required=True, help='Task name (e.g., shell, screenshot)')
         parser.add_argument('-id', required=True, help='Agent ID')
-        parser.add_argument('-priority', required=True, help='Priority level (e.g., low, medium, high)')
         parser.add_argument('-command', nargs='+', help='Command for the shell task, capture multiple arguments')
         
         try:
             args = parser.parse_args(line.split())
             task_name = args.task
             agent_id = args.id
-            priority = args.priority
             command_args = args.command if args.command else []
             
-            if priority != "high" and priority != "low":
-                print("Priority must be high or low")
-                return
 
             # Execute the task with agentId and optional arguments
-            self.tasks.execute_task(task_name, agent_id, priority, command_args)
+            self.tasks.execute_task(task_name, agent_id, command_args)
 
         except SystemExit as e:
             print("Error parsing arguments for select_task function\n")
@@ -105,4 +100,4 @@ class MyShell(cmd.Cmd):
         print("get_all_agents: to get all agents.")
         print("list_tasks: to list all available tasks.")
         print("get_tasks -id <agentId> -status <status>: to get tasks for a specific agent.")
-        print("select_task -task <task_name> -id <agentId> -priority <priority> -command <args>: to select a task to execute.")
+        print("select_task -task <task_name> -id <agentId> -command <args>: to select a task to execute.")
