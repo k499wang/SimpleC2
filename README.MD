@@ -2,6 +2,8 @@
 
 SimpleC2 is a lightweight Command and Control (C2) server built with Mongo, Express and Python for the backend and c++ for the client.
 
+Check: https://github.com/k499wang/C2ImplantSrc for implant code.
+
 ## Installation
 
 1. Clone the repository:
