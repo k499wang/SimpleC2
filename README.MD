@@ -10,10 +10,6 @@ Check the implant code here: [C2ImplantSrc](https://github.com/k499wang/C2Implan
 - [Usage](#usage)
 - [Configuration](#configuration)
 - [Requirements](#requirements)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
 
 ## Installation
 
