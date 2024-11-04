@@ -58,19 +58,6 @@ Follow these steps to set up the SimpleC2 server:
     python3 main.py
     ```
 
-3. **Access the server**:
-   - By default, the server runs on `http://localhost:2000`. You can access it through a web browser or use API testing tools like Postman.
-
-### Example Commands
-
-- **Sending a command to a client**:
-    ```json
-    POST http://localhost:2000/command
-    {
-        "client_id": "YOUR_CLIENT_ID",
-        "command": "YOUR_COMMAND"
-    }
-    ```
 
 ## Configuration
 
