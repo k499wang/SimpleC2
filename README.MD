@@ -46,8 +46,6 @@ Follow these steps to set up the SimpleC2 server:
 
 *Note*: You must start the server before trying to run the CLI.
 
-*Note*: You must start the server before trying to run the CLI.
-
 1. **Start the server**:
     ```sh
     npm run start
