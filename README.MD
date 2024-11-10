@@ -23,6 +23,8 @@ SimpleC2 is a lightweight Command and Control (C2) server built with Mongo, Expr
 
 ## Usage
 
+*Note*: You must start the server before trying to run the CLI.
+
 1. Start the server:
     ```sh
     npm server start

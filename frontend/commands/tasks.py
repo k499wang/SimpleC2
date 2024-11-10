@@ -3,6 +3,7 @@ from utils.jsonTools import list_all_json
 import os
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
 SECRET_API = os.getenv("SECRET_API_KEY")
@@ -10,7 +11,7 @@ SECRET_API = os.getenv("SECRET_API_KEY")
 def run_shell(agent_id, args):
     """Logic to execute shell commands with arguments for a specific agent."""
     command = ' '.join(args)  # Join the arguments to form the command string
-    print(f"Running shell command for agentId {agent_id}: {command}" )
+    print( f"Running shell command for agentId {agent_id}: {command}" )
     
     headers = {
             'x-api-key': SECRET_API,
@@ -28,7 +29,7 @@ def run_shell(agent_id, args):
     response = requests.post('http://localhost:2000/api/tasks/createTasks', headers=headers, json=payload)
     
     if response.status_code == 201:
-        print(response.json())
+        print("Command executed successfully")
     else:
         print( "Error running shell command: " + response.json().get('message', 'No message provided'))
     

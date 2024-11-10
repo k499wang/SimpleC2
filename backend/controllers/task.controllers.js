@@ -62,12 +62,14 @@ export const updateTask = async(req, res) => {
             output: task.output
         };
 
-        if(socketPython.writable) {
+        if(socketPython.writable && !socketPython.destroyed) {
             try {
                 socketPython.write(JSON.stringify(jsonOutput));
             } catch (error) {
                 console.error('Error writing to socket:', error);
             }
+        } else {
+            console.error('Socket is not writable or has been destroyed');
         }
 
         res.status(200).json(task);

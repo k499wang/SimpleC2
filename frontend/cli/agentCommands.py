@@ -22,9 +22,10 @@ def create_agent_command(args):
     agent_id = args.agentId
     
     if(agent_id == "random"):
-        print("Generating random agent id... ")
+        print("\nGenerating random agent id... ")
         agent_id = generate_random_string()
         print("Agent id: " + agent_id)
+        print("\n")
     
     
     agent = AgentModel(SECRET_API)
@@ -36,5 +37,6 @@ def get_agent_command(args):
     agent = AgentModel(SECRET_API)
     response = agent.get_agent(agent_id)
     
-    print("*** Agent ***")
+    print("\n*** Agent ***")
     print(json.dumps(response, indent=4, default=str))
+    print("*** Agent End ***\n")

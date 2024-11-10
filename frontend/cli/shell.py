@@ -27,13 +27,13 @@ class MyShell(cmd.Cmd):
             status = args.status
             
             if status != "completed" and status != "pending" and status != "all":
-                print("Status must be completed or pending or all")
+                print("\nStatus must be completed or pending or all\n")
                 return
             
             self.tasks.get_tasks(agent_id, status)
         
         except SystemExit:
-            print("Error parsing arguments for get_tasks function")
+            print("\nError parsing arguments for get_tasks function\n")
     
     def do_select_task(self, line):
         """Select a task to execute. Usage: select_task <task_name> <agentId> [args]"""
@@ -53,13 +53,13 @@ class MyShell(cmd.Cmd):
             self.tasks.execute_task(task_name, agent_id, command_args)
 
         except SystemExit as e:
-            print("Error parsing arguments for select_task function\n")
+            print("\nError parsing arguments for select_task function\n")
         
     def do_get_all_agents(self, line):
         try:
             get_all_agents_command()
         except SystemExit:
-            print("Error getting all agents") 
+            print("\nError getting all agents\n") 
         
     
     def do_create_agent(self, line):
@@ -73,7 +73,7 @@ class MyShell(cmd.Cmd):
             args = parser.parse_args(line.split())
             create_agent_command(args)
         except SystemExit:
-            print("Error parsing arguments for create_agent function")
+            print("\nError parsing arguments for create_agent function\n")
         
     def do_get_agent(self, line):
         parser = argparse.ArgumentParser(prog='get_agent', description="Get an agent")
@@ -86,8 +86,6 @@ class MyShell(cmd.Cmd):
         except SystemExit:
             print("Error parsing arguments for get_agent function")
  
-    def help_add(self, line):
-        print("Help Agent")
         
         
     def do_exit(self, line):
@@ -97,10 +95,10 @@ class MyShell(cmd.Cmd):
         return True
     
     def do_help(self, line):
-        print("*******Help menu*********")
+        print("\n*******Help menu*********")
         print("create_agent <name>: to create an agent with a name.")
         print("get_agent <name>: to get an agent with the name.")
         print("get_all_agents: to get all agents.")
         print("list_tasks: to list all available tasks.")
         print("get_tasks -id <agentId> -status <status>: to get tasks for a specific agent.")
-        print("select_task -task <task_name> -id <agentId> -command <args>: to select a task to execute.")
+        print("select_task -task <task_name> -id <agentId> -command <args>: to select a task to execute.\n")

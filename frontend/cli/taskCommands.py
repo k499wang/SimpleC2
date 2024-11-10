@@ -13,9 +13,11 @@ class TaskCommands:
 
     def list_tasks(self):
         """List available tasks."""
-        print("Available tasks:")
+        print("\nAvailable tasks:")
         for task_name, (_, description) in self.tasks.items():
             print(f"- {task_name}: {description}")
+        
+        print("\n")
     
     def get_tasks(self, agent_id, status):
         """Get tasks for a specific agent."""
@@ -31,12 +33,12 @@ class TaskCommands:
                 if len(task_args) == 0:
                     print("Please provide a command to run with the shell task")
                     return
-                print(f"Executing task: {task_name} for agentId: {agent_id} with arguments: {task_args}")
+                print(f"\nExecuting task: {task_name} for agentId: {agent_id} with arguments: {task_args}\n")
 
                 self.tasks[task_name][0](agent_id, task_args)  # Pass agentId and args to shell
             else:
-                print(f"Executing task: {task_name} for agentId: {agent_id} with arguments: {task_args}")
+                print(f"\nExecuting task: {task_name} for agentId: {agent_id} with arguments: {task_args}\n")
 
                 self.tasks[task_name][0](agent_id)  # Pass only agentId for other tasks
         else:
-            print(f"Task '{task_name}' not found. Type 'list_tasks' to see available tasks.")
+            print(f"\nTask '{task_name}' not found. Type 'list_tasks' to see available tasks.\n")
