@@ -29,7 +29,7 @@ def run_shell(agent_id, args):
     response = requests.post('http://localhost:2000/api/tasks/createTasks', headers=headers, json=payload)
     
     if response.status_code == 201:
-        print("Command executed successfully")
+        print("Command executed successfully\n")
     else:
         print( "Error running shell command: " + response.json().get('message', 'No message provided'))
     
