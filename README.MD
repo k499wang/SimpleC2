@@ -54,6 +54,8 @@ Follow these steps to set up the SimpleC2 server:
 2. **Run the CLI**:
     ```python
     python3 main.py
+
+    SimpleC2 >
     ```
 
 
