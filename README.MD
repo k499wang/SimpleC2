@@ -58,6 +58,93 @@ Follow these steps to set up the SimpleC2 server:
     SimpleC2 >
     ```
 
+## 🖥️ Command-Line Interface (CLI) for Agent Management
+
+This project includes a simple command-line interface (CLI) for managing agents, tasks, and interacting with the C2 server. The CLI is built using Python's `cmd` module and allows administrators to easily control and interact with agents deployed on different systems.
+
+### Features
+
+- **Agent Management**: Create, retrieve, and list agents in the system.
+- **Task Management**: List available tasks, view tasks for specific agents, and execute tasks on agents.
+- **Task Execution**: Select a task and execute it with optional arguments on a specific agent.
+
+### CLI Commands
+
+The following commands are available in the CLI shell:
+
+#### `create_agent <agentId>`
+Creates a new agent with the specified agent ID. If `agentId` is set to "random", a random agent name will be generated.
+
+**Example**:  
+`create_agent AGENT123`
+
+#### `get_agent <agentId>`
+Retrieves the details of an agent by its agent ID.
+
+**Example**:  
+`get_agent AGENT123`
+
+#### `get_all_agents`
+Lists all agents currently available in the system.
+
+**Example**:  
+`get_all_agents`
+
+#### `list_tasks`
+Lists all available tasks in the system that can be executed on agents.
+
+**Example**:  
+`list_tasks`
+
+#### `get_tasks -id <agentId> -status <status>`
+Retrieves a list of tasks for a specific agent, filtered by task status. Valid status values are:
+- `completed`
+- `pending`
+- `all` (default)
+
+**Example**:  
+`get_tasks -id AGENT123 -status pending`
+
+#### `select_task -task <task_name> -id <agentId> -command <args>`
+Selects a task to execute on an agent. You can specify the task name, agent ID, and optional command arguments (e.g., a shell command or additional parameters).
+
+**Example**:  
+`select_task -task shell -id AGENT123 -command "ls -la"`
+
+#### `exit`
+Exits the CLI shell.
+
+**Example**:  
+`exit`
+
+### Usage Example
+
+1. **Create an Agent**:  
+   To create a new agent with ID `AGENT123`, use the following command:  
+   `create_agent AGENT123`
+
+2. **List Available Tasks**:  
+   To list all available tasks, use:  
+   `list_tasks`
+
+3. **Get Tasks for a Specific Agent**:  
+   To get the pending tasks for agent `AGENT123`, run:  
+   `get_tasks -id AGENT123 -status pending`
+
+4. **Select and Execute a Task**:  
+   To select and execute the `shell` task with a command (`ls -la`) on agent `AGENT123`, use:  
+   `select_task -task shell -id AGENT123 -command "ls -la"`
+
+5. **Exit the CLI**:  
+   To exit the shell, simply type:  
+   `exit`
+
+### Notes
+
+- The CLI supports a wide range of commands to manage agents and execute tasks.
+- Arguments for each command are flexible and can be adjusted to meet your needs (e.g., different agent IDs, task names, or command arguments).
+- If you need help or further guidance, use the `help` command within the CLI for detailed usage instructions:  
+  `help`
 
 ## Configuration
 
